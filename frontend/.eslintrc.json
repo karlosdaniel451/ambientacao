@@ -3,6 +3,11 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "settings": {
+    "jest": {
+      "version": 26
+    }
+  },
   "overrides": [
     {
       "files": [
@@ -57,6 +62,12 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": ["*.spec.ts"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": { "jest/prefer-expect-assertions": "off" }
     }
   ]
 }
