@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "source-map-explorer": "source-map-explorer dist/your-angular-app-name/**/*.js",
+    "sourcemap": "npx source-map-explorer dist/*/main.*.js",
     "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --quiet --fix",
     "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write",
     "e2e": "ng e2e",
@@ -26,7 +26,6 @@
     "eslint-plugin-jest": "^26.1.5",
     "rxjs": "~7.5.0",
     "save-dev": "^0.0.1-security",
-    "source-map-explorer": "^2.5.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -55,6 +54,7 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
+    "source-map-explorer": "^2.5.2",
     "typescript": "~4.6.2"
   },
   "lint-staged": {

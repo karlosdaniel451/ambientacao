@@ -9,11 +9,11 @@ import { getTestBed } from '@angular/core/testing';
 
 declare const require: {
   context(
-    path: string,
-    deep?: boolean,
-    filter?: RegExp
+    path: string, // eslint-disable-line no-unused-vars
+    deep?: boolean, // eslint-disable-line no-unused-vars
+    filter?: RegExp // eslint-disable-line no-unused-vars
   ): {
-    <T>(id: string): T;
+    <T>(id: string): T; // eslint-disable-line no-unused-vars
     keys(): string[];
   };
 };
