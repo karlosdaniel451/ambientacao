@@ -4,7 +4,7 @@ O Gitflow Workflow é um fluxo de trabalho do Git que auxilia o desenvolvimento 
 
 ## Política de Branch
 
-<img alt="GitFlow" title="GitFlow" src="/diagramas/gitflow.png" height="400px">
+<img alt="GitFlow" title="GitFlow" src="https://github.com/FabricaDeSoftwareINF/ambientacao/blob/a247af7c8b2f2d85d729890c58bfa97e4aec5853/documentacao/gerencia-de-configuracao/diagramas/gitflow.png" height="400px">
 
 ## Política de scm
 
