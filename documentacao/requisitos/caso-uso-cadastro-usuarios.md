@@ -3,6 +3,7 @@
 | <div style="width:290px">Versão</div> | Atividade | Autor | Data |
 |:------------|:----------------|:--------------|:----------------|
 | 1.0 | Criação do documento | Mariana Soller Ramada  | 14/04/2022 |
+|1.1  | Corrigindo idenfiticador de Fluxo de Exceção e removendo seção de Regras Gerais | Mariana Soller Ramada | 27/02/2024 |
 
 ## **Descrição**
 Essa funcionalidade é responsável por cadastrar usuários para permitir o acesso dos mesmos ao sistema.
@@ -63,7 +64,7 @@ O usuário deve possuir a permissão de administrador.
 |:--------------|:----------------|:--------------|:----------------|:--------------|
 | 1 | O usuário pressiona o botão *Adicionar usuário* | [FA01](#FA01), [FA02](#FA02), [FA03](#FA03) | | [1](#tela1) |
 | 2 | O sistema exibe a tela de inclusão de usuário |  | | [2](#tela2)|
-| 3 | O usuário informa o nome, CPF e pressiona o botão *Adicionar* | [FE01](#FE01), [FE02](#FE02) |  | [2](#tela2) |
+| 3 | O usuário informa o nome, CPF e pressiona o botão *Adicionar* | [FEX01](#FEX01), [FEX02](#FEX02) |  | [2](#tela2) |
 | 4 | O sistema exibe uma mensagem de sucesso |  | |  |
 
 
@@ -73,7 +74,7 @@ O usuário deve possuir a permissão de administrador.
 
 | ID | Passo | Fluxo | Regra de Negócio | Tela |
 |:--------------|:----------------|:--------------|:----------------|:--------------|
-| 1 |	O usuário informa o nome do usuário | [FE03](#FE03) | [RN02](#RNS), [RN04](#RNS) | [1](#tela1) |
+| 1 |	O usuário informa o nome do usuário | [FEX03](#FEX03) | [RN02](#RNS), [RN04](#RNS) | [1](#tela1) |
 | 2 |	O sistema exibe o(s) usuário(s) que atende(m) à busca |  | [RN03](#RNS) |  |
 
 ### <a name="FA02"></a>FA02 - Editar usuário
@@ -82,7 +83,7 @@ O usuário deve possuir a permissão de administrador.
 |:--------------|:----------------|:--------------|:----------------|:--------------|
 | 1 | O usuário pressiona o botão *Editar* |  |  | [1](#tela1) |
 | 2 |	O sistema exibe a tela de edição de usuário |  |  | [3](#tela3) |
-| 3 |	O usuário informa os novos dados e pressiona o botão *Atualizar*  | [FE01](#FE01), [FE02](#FE02) |  | [3](#tela3) |
+| 3 |	O usuário informa os novos dados e pressiona o botão *Atualizar*  | [FEX01](#FEX01), [FEX02](#FEX02) |  | [3](#tela3) |
 | 4 |	O sistema exibe uma mensagem de sucesso |  |  |  |
 
 ### <a name="FA03"></a>FA03 - Excluir usuário
@@ -105,21 +106,21 @@ O usuário deve possuir a permissão de administrador.
 ## **Fluxo Extensão**: Não se aplica
 
 ## **Fluxo Exceção**
-### <a name="FE01"></a>FE01 - Campos obrigatórios não preenchidos
+### <a name="FEX01"></a>FEX01 - Campos obrigatórios não preenchidos
 | ID | Passo | Fluxo | Regra de Negócio | Tela |
 |:--------------|:----------------|:--------------|:----------------|:--------------|
 | 1 | O sistema identifica que campos obrigatórios não foram preenchidos |  | | |
 | 2 | O sistema informa que é necessário preencher os respectivos campos |  | | |
 | 3 | O sistema retorna o fluxo para o Passo 3 do [FP](#FP) ou [FA02](#FA02) |  | | |
   
-### <a name="FE02"></a>FE02 - Dados inválidos
+### <a name="FEX02"></a>FEX02 - Dados inválidos
 | ID | Passo | Fluxo | Regra de Negócio | Tela |
 |:--------------|:----------------|:--------------|:----------------|:--------------|
 | 1 | O sistema identifica que há dados informados inválidos |  | [RN01](#RNS) | |
 | 2 | O sistema informa que há dados incorretos |  | | |
 | 3 | O sistema retorna o fluxo para o Passo 3 do [FP](#FP) ou [FA02](#FA02) |  | | |
   
-### <a name="FE03"></a>FE03 - Nenhum resultado encontrado
+### <a name="FEX03"></a>FEX03 - Nenhum resultado encontrado
 | ID | Passo | Fluxo | Regra de Negócio | Tela |
 |:--------------|:----------------|:--------------|:----------------|:--------------|
 | 1 | O sistema não encontra nenhum usuário que atenda aos critérios da busca	 |  | | |
@@ -140,7 +141,3 @@ O usuário deve possuir a permissão de administrador.
 | ID | Descrição da Regra |
 |:-----|:-----|
 | **RI01** | A listagem deve ser paginada. Por padrão, devem ser exibidos 10 registros por página, porém essa quantidade pode ser alterada. |
-
-## Regras Gerais
-
-Não se aplica
