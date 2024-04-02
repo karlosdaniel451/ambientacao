@@ -1,11 +1,6 @@
 # Critérios de aceitação de Pull Requests
 
-## 1 - Testes
-
- - Cobertura de teste: mínimo 40%
- - Testes comentados ou ignorados: 0
-
-## 2 - Configuração de ambiente
+## 1 - Configuração de ambiente
 
  - Não escrever valores de informações sensíveis em arquivos de configuração (ex.: application.properties). No lugar de seus valores, colocar uma breve descrição.
  - Fornecer valores sensíveis em tempo de execução (ex.: argumento de execução, variáveis de ambiente etc)
@@ -25,11 +20,11 @@ spring.jpa.hibernate.ddl-auto=none</span>
 
 </br>
 
-## 3 - Standards para código fonte
+## 2 - Standards para código fonte
 
-### 3.1 - Java
+### 2.1 - Java
 
-#### 3.1.1 - Comentários
+#### 2.1.1 - Comentários
 ##### Copyright
 Declarar o trecho de Copyright, exatamente como descrito abaixo, no início de cada classe. </br>
 > /*</br>
@@ -75,9 +70,9 @@ Equipe decide se método precisa ser comentado. </br>
 > package br.ufg.inf.fabrica.tceduca.gestao.model;</br>
 > #fim do arquivo</sub>
 
-### 3.2 - Angular
+### 2.2 - Angular
 
-#### 3.2.1 - Comentários </br> 
+#### 2.2.1 - Comentários </br> 
 ##### Copyright
 Declarar o trecho de Copyright, exatamente como descrito abaixo, no início de cada classe. </br>
 > /*</br>
@@ -93,6 +88,3 @@ Exemplo:
   Fábrica de Software - Instituto de Informática - UFG</br>
  */
 
-##### Classe
-##### Método
-##### Package
