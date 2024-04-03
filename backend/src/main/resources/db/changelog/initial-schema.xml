@@ -19,5 +19,6 @@
     </changeSet>
     <include file="db/changelog/addNotNullConstraintpessoa#nome-changelog.xml"/>
     <include file="db/changelog/addNotNullConstraintpessoa#cpf-changelog.xml"/>
+    <include file="/db/changelog/addUniqueConstraintpessoa#cpf-changelog.xml"/>
 
 </databaseChangeLog>
