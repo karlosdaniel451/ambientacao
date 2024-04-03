@@ -13,6 +13,7 @@ public class Pessoa {
     @Column(updatable = false)
     private Integer id;
 
+    @Column(nullable = false)
     private String nome;
 
     private String cpf;
