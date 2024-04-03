@@ -18,5 +18,6 @@
         </createTable>
     </changeSet>
     <include file="db/changelog/addNotNullConstraintpessoa#nome-changelog.xml"/>
+    <include file="db/changelog/addNotNullConstraintpessoa#cpf-changelog.xml"/>
 
 </databaseChangeLog>
