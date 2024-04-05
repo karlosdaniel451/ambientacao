@@ -47,6 +47,12 @@ public class PessoaService {
     public PessoaResponse create(PessoaCreateRequest pessoa) {
         Pessoa pessoaModel = new Pessoa();
         BeanUtils.copyProperties(pessoa, pessoaModel);
+        pessoaModel.setCpf(
+                pessoaModel.getCpf()
+                        .replace(".", "")
+                        .replace("-", "")
+        );
+
         Pessoa pessoaModelUpdated = pessoaRepository.save(pessoaModel);
 
         return new PessoaResponse(
