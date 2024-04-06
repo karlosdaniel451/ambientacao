@@ -6,10 +6,11 @@ import { CriarPessoaComponent } from './component/criar-pessoa/criar-pessoa.comp
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, CriarPessoaComponent],
-  imports: [BrowserModule, AppRoutingModule, MatInputModule, MatCardModule, MatButtonModule],
+  imports: [BrowserModule, AppRoutingModule, MatInputModule, MatCardModule, MatButtonModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
