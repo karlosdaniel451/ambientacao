@@ -9,10 +9,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ListarPessoaComponent } from './component/listar-pessoa/listar-pessoa.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatListModule} from "@angular/material/list";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [AppComponent, CriarPessoaComponent, ListarPessoaComponent],
-  imports: [BrowserModule, AppRoutingModule, MatInputModule, MatCardModule, MatButtonModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, MatInputModule, MatCardModule, MatButtonModule, FormsModule, HttpClientModule, MatPaginatorModule, MatListModule, MatTableModule],
   providers: [],
   bootstrap: [AppComponent],
 })

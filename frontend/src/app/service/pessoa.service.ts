@@ -19,7 +19,7 @@ export class PessoaService {
     return this.http.post<Pessoa>(this.baseUrl, pessoa);
   }
 
-  read(): Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(this.baseUrl);
+  read(page: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}?page=${page}`)
   }
 }
