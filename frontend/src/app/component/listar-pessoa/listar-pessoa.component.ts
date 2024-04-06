@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Pessoa } from '../../model/pessoa';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { PessoaService } from '../../service/pessoa.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Pessoa} from "../../model/pessoa";
+import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {MatTableDataSource} from "@angular/material/table";
+import {PessoaService} from "../../service/pessoa.service";
 
 @Component({
   selector: 'app-listar-pessoa',
