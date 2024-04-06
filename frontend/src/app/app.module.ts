@@ -8,9 +8,10 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ListarPessoaComponent } from './component/listar-pessoa/listar-pessoa.component';
 
 @NgModule({
-  declarations: [AppComponent, CriarPessoaComponent],
+  declarations: [AppComponent, CriarPessoaComponent, ListarPessoaComponent],
   imports: [BrowserModule, AppRoutingModule, MatInputModule, MatCardModule, MatButtonModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
