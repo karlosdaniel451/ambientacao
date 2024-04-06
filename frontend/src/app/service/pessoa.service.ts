@@ -40,4 +40,8 @@ export class PessoaService {
   update(pessoa: Pessoa): Observable<Pessoa> {
     return this.http.put<Pessoa>(`${this.baseUrl}/${pessoa.id}`, pessoa);
   }
+
+  readByNome(value: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}?nome=${value}`);
+  }
 }

@@ -18,6 +18,7 @@ export class ListarPessoaComponent implements OnInit {
   totalItems = 0;
   pageSize = 10;
   currentPage = 0;
+  termoBusca: any;
 
   constructor(private pessoaService: PessoaService) {}
 
@@ -52,6 +53,16 @@ export class ListarPessoaComponent implements OnInit {
         this.totalItems = pessoas.totalElements;
         this.pageSize = pessoas.size;
       });
+    });
+  }
+
+  buscarPessoas() {
+    console.log(this.termoBusca);
+    this.pessoaService.readByNome(this.termoBusca).subscribe((pessoas) => {
+      console.log(pessoas.content);
+      this.pessoas.data = pessoas.content;
+      this.totalItems = pessoas.totalElements;
+      this.pageSize = pessoas.size;
     });
   }
 }
