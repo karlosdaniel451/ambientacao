@@ -6,7 +6,6 @@
 
     <mat-form-field>
         <label>Buscar</label>
-<!--        apenas quando aperta enter-->
         <input matInput (keyup.enter)="buscarPessoas()" [(ngModel)]="termoBusca">
     </mat-form-field>
 
@@ -22,8 +21,12 @@
         <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let pessoa">
-                <button routerLink="/editar-pessoa/{{pessoa.id}}">Editar</button>
-                <button (click)="excluirPessoa(pessoa.id)">Deletar</button>
+              <a routerLink="/editar-pessoa/{{pessoa.id}}">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a (click)="excluirPessoa(pessoa.id)">
+                <mat-icon>delete</mat-icon>
+              </a>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
