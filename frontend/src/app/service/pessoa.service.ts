@@ -32,4 +32,12 @@ export class PessoaService {
   delete(id: number): Observable<Pessoa> {
     return this.http.delete<Pessoa>(`${this.baseUrl}/${id}`);
   }
+
+  readById(id: string | number): Observable<Pessoa> {
+    return this.http.get<Pessoa>(`${this.baseUrl}/${id}`);
+  }
+
+  update(pessoa: Pessoa): Observable<Pessoa> {
+    return this.http.put<Pessoa>(`${this.baseUrl}/${pessoa.id}`, pessoa);
+  }
 }

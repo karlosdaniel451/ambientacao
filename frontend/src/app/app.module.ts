@@ -15,9 +15,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarPessoaComponent } from './component/editar-pessoa/editar-pessoa.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
-  declarations: [AppComponent, CriarPessoaComponent, ListarPessoaComponent, EditarPessoaComponent],
+  declarations: [
+    AppComponent,
+    CriarPessoaComponent,
+    ListarPessoaComponent,
+    EditarPessoaComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +37,8 @@ import { EditarPessoaComponent } from './component/editar-pessoa/editar-pessoa.c
     MatTableModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
