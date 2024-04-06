@@ -13,7 +13,9 @@ public class Pessoa {
     @Column(updatable = false)
     private Integer id;
 
+    @Column(nullable = false)
     private String nome;
 
+    @Column(unique = true, nullable = false)
     private String cpf;
 }
