@@ -3,11 +3,11 @@
   <form>
     <mat-form-field>
       <label>Nome *</label>
-      <input type="text" [(ngModel)]="pessoa.nome" name="nome">
+      <input matInput type="text" [(ngModel)]="pessoa.nome" name="nome">
     </mat-form-field>
     <mat-form-field>
       <label>CPF *</label>
-      <input type="text" [(ngModel)]="pessoa.cpf" name="cpf">
+      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf">
     </mat-form-field>
   </form>
   <button mat-raised-button routerLink="/listar-pessoa">Cancelar</button>
