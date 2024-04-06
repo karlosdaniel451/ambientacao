@@ -41,6 +41,10 @@ export class ListarPessoaComponent implements OnInit {
   }
 
   excluirPessoa(id: number) {
+    if (!confirm('Deseja excluir o usuário?')) {
+      return;
+    }
+
     this.pessoaService.delete(id).subscribe(() => {
       this.pessoaService.showMessage('Pessoa excluída com sucesso!');
       this.pessoaService.read(this.currentPage).subscribe((pessoas) => {
