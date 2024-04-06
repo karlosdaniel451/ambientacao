@@ -9,10 +9,10 @@ import {Pessoa} from "../model/pessoa";
 export class PessoaService {
   baseUrl: string = '/api/pessoas';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   showMessage(msg: string): void {
-    alert(msg)
+    alert(msg);
   }
 
   create(pessoa: Pessoa): Observable<Pessoa> {
@@ -20,6 +20,10 @@ export class PessoaService {
   }
 
   read(page: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}?page=${page}`)
+    return this.http.get<any>(`${this.baseUrl}?page=${page}`);
+  }
+
+  delete(id: number): Observable<Pessoa> {
+    return this.http.delete<Pessoa>(`${this.baseUrl}/${id}`);
   }
 }
