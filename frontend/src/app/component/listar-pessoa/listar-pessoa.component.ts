@@ -54,6 +54,7 @@ export class ListarPessoaComponent implements OnInit {
         this.pessoas.data = pessoas.content;
         this.totalItems = pessoas.totalElements;
         this.pageSize = pessoas.size;
+        this.existePessoa = this.existesPessoas(this.totalItems);
       });
     });
   }
