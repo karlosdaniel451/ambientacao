@@ -36,6 +36,7 @@ export class ListarPessoaComponent implements OnInit {
     this.pageSize = $event.pageSize;
     this.pessoaService.read(this.currentPage).subscribe((pessoas) => {
       this.pessoas.data = pessoas.content;
+      this.sortData(this.sort);
     });
   }
 
