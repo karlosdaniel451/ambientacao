@@ -19,6 +19,7 @@ export class ListarPessoaComponent implements OnInit {
   pageSize = 10;
   currentPage = 0;
   termoBusca: any;
+  existePessoa: boolean = false;
 
   constructor(private pessoaService: PessoaService) {}
 
@@ -30,6 +31,7 @@ export class ListarPessoaComponent implements OnInit {
       this.pessoas.data = pessoas.content;
       this.totalItems = pessoas.totalElements;
       this.pageSize = pessoas.size;
+      this.existePessoa = this.existesPessoas(this.totalItems);
     });
   }
 
@@ -63,6 +65,10 @@ export class ListarPessoaComponent implements OnInit {
       this.pessoas.data = pessoas.content;
       this.totalItems = pessoas.totalElements;
       this.pageSize = pessoas.size;
+      this.existePessoa = this.existesPessoas(this.totalItems);
     });
+  }
+  existesPessoas(totalItens: number): boolean {
+    return totalItens > 0;
   }
 }
