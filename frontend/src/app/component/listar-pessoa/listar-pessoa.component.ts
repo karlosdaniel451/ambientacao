@@ -3,6 +3,7 @@ import {Pessoa} from "../../model/pessoa";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {PessoaService} from "../../service/pessoa.service";
+import {MatSort, Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-listar-pessoa',
@@ -10,10 +11,11 @@ import {PessoaService} from "../../service/pessoa.service";
   styleUrls: ['./listar-pessoa.component.scss'],
 })
 export class ListarPessoaComponent implements OnInit {
-  pessoas = new MatTableDataSource<Pessoa>();
+  pessoas: MatTableDataSource<Pessoa> = new MatTableDataSource<Pessoa>();
   displayedColumns: Iterable<string> = ['nome', 'cpf', 'acoes'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   totalItems = 0;
   pageSize = 10;
@@ -24,15 +26,9 @@ export class ListarPessoaComponent implements OnInit {
   constructor(private pessoaService: PessoaService) {}
 
   ngOnInit(): void {
-    // @ts-ignore
+    this.pessoas.sort = this.sort;
     this.pessoas.paginator = this.paginator;
-
-    this.pessoaService.read(this.currentPage).subscribe((pessoas) => {
-      this.pessoas.data = pessoas.content;
-      this.totalItems = pessoas.totalElements;
-      this.pageSize = pessoas.size;
-      this.existePessoa = this.existesPessoas(this.totalItems);
-    });
+    this.pegaPessoas();
   }
 
   pageChanged($event: PageEvent) {
@@ -40,6 +36,7 @@ export class ListarPessoaComponent implements OnInit {
     this.pageSize = $event.pageSize;
     this.pessoaService.read(this.currentPage).subscribe((pessoas) => {
       this.pessoas.data = pessoas.content;
+      this.sortData(this.sort);
     });
   }
 
@@ -50,20 +47,13 @@ export class ListarPessoaComponent implements OnInit {
 
     this.pessoaService.delete(id).subscribe(() => {
       this.pessoaService.showMessage('Pessoa excluída com sucesso!');
-      this.pessoaService.read(this.currentPage).subscribe((pessoas) => {
-        this.pessoas.data = pessoas.content;
-        this.totalItems = pessoas.totalElements;
-        this.pageSize = pessoas.size;
-        this.existePessoa = this.existesPessoas(this.totalItems);
-      });
+      this.pegaPessoas();
     });
   }
 
   buscarPessoas() {
-    console.log(this.termoBusca);
     this.pessoaService.readByNome(this.termoBusca).subscribe((pessoas) => {
-      console.log(pessoas.content);
-      this.pessoas.data = pessoas.content;
+      this.pessoas.data = pessoas.content as Pessoa[];
       this.totalItems = pessoas.totalElements;
       this.pageSize = pessoas.size;
       this.existePessoa = this.existesPessoas(this.totalItems);
@@ -72,4 +62,35 @@ export class ListarPessoaComponent implements OnInit {
   existesPessoas(totalItens: number): boolean {
     return totalItens > 0;
   }
+  pegaPessoas() {
+    this.pessoaService.read(this.currentPage).subscribe((pessoas) => {
+      this.pessoas.data = pessoas.content as Pessoa[];
+      this.totalItems = pessoas.totalElements;
+      this.pageSize = pessoas.size;
+      this.existePessoa = this.existesPessoas(this.totalItems);
+    });
+  }
+
+  sortData(sort: Sort) {
+    const data = this.pessoas.data.slice();
+    if (!sort.active || sort.direction === '') {
+      this.pessoas.data = data;
+      return;
+    }
+
+    this.pessoas.data = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'nome':
+          return compare(a.nome, b.nome, isAsc);
+        case 'cpf':
+          return compare(a.cpf, b.cpf, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+}
+function compare(a: string | number, b: string | number, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
