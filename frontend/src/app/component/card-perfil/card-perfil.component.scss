@@ -1,0 +1,36 @@
+.perfil {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.menu {
+  display: flex;
+  padding: 10px;
+}
+
+.menu mat-icon {
+  font-size: 50px;
+}
+
+.nome-pessoa {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+}
+
+.borda {
+  border: 1px solid black;
+  padding-left: 10px;
+}
+
+.icone-perfil {
+  font-size: 100px;
+}
+
+.nome-pessoa mat-card-subtitle {
+  color: green;
+}
+
+.branco {
+  color: white;
+  height: 530px;
+}
