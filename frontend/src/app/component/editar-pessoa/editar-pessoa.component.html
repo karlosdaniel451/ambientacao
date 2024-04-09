@@ -10,6 +10,8 @@
       <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf">
     </mat-form-field>
   </form>
-  <button mat-raised-button routerLink="/listar-pessoa">Cancelar</button>
-  <button mat-raised-button color="primary" type="submit" (click)="atualizarPessoa()">Atualizar</button>
+  <div class="butoes">
+    <button mat-raised-button routerLink="/listar-pessoa">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" (click)="atualizarPessoa()">Atualizar</button>
+  </div>
 </mat-card>

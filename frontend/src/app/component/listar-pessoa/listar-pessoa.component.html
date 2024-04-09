@@ -1,16 +1,16 @@
 <div>
   <mat-card-title>Usuários</mat-card-title>
-  <div>
+  <div class="adicionar-usuario">
     <a mat-raised-button color="primary" routerLink="/cria-pessoa">Adicionar usuário</a>
   </div>
 
-  <mat-form-field>
-    <label>Buscar</label>
-    <input matInput (keyup.enter)="buscarPessoas()" [(ngModel)]="termoBusca">
-  </mat-form-field>
-
-  <div *ngIf="existePessoa">
-    <mat-table #table [dataSource]="pessoas" matSort (matSortChange)="sortData($event)">
+  <div *ngIf="existePessoa" class="mat-elevation-z8">
+    <mat-card-subtitle>Lista de usuários</mat-card-subtitle>
+    <mat-form-field class="busca">
+      <label>Buscar</label>
+      <input matInput (keyup.enter)="buscarPessoas()" [(ngModel)]="termoBusca">
+    </mat-form-field>
+    <mat-table #table [dataSource]="pessoas" matSort (matSortChange)="sortData($event)" class="tabela">
       <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
         <mat-cell *matCellDef="let pessoa"> {{ pessoa.nome }} </mat-cell>
