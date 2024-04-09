@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {CriarPessoaComponent} from "./component/criar-pessoa/criar-pessoa.component";
-import {ListarPessoaComponent} from "./component/listar-pessoa/listar-pessoa.component";
-import {EditarPessoaComponent} from "./component/editar-pessoa/editar-pessoa.component";
+import { CriarPessoaComponent } from './component/criar-pessoa/criar-pessoa.component';
+import { ListarPessoaComponent } from './component/listar-pessoa/listar-pessoa.component';
+import { EditarPessoaComponent } from './component/editar-pessoa/editar-pessoa.component';
 
 const routes: Routes = [
   {

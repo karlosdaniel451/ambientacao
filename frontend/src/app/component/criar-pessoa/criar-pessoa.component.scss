@@ -4,11 +4,19 @@ form {
   margin-top: 20px;
 }
 
-.butoes {
+.botoes {
   justify-content: flex-end;
   display: flex;
 }
 
 button {
   margin: 20px 15px 0px 0px;
+}
+
+:host {
+  width: 100%;
+}
+
+.espaco {
+  height: 530px;
 }

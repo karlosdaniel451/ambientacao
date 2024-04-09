@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 30px 0;
+}
+
+app-card-perfil {
+  padding-right: 30px;
+  width: 400px;
+}
+
+router-outlet {
+  flex: 1;
+}

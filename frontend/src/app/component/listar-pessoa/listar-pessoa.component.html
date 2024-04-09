@@ -5,13 +5,13 @@
     <a mat-raised-button color="primary" routerLink="/cria-pessoa">Adicionar usuário</a>
   </div>
 
-  <div *ngIf="existePessoa" class="mat-elevation-z8">
+  <div class="mat-elevation-z8">
     <mat-card-subtitle>Lista de usuários</mat-card-subtitle>
     <mat-form-field class="busca">
       <label>Buscar</label>
       <input matInput (keyup.enter)="buscarPessoas()" [(ngModel)]="termoBusca">
     </mat-form-field>
-    <mat-table #table [dataSource]="pessoas" matSort (matSortChange)="sortData($event)" class="tabela">
+    <mat-table *ngIf="existePessoa" #table [dataSource]="pessoas" matSort (matSortChange)="sortData($event)" class="tabela">
       <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
         <mat-cell *matCellDef="let pessoa"> {{ pessoa.nome }} </mat-cell>
@@ -34,10 +34,10 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <div *ngIf="!existePessoa" class="nenhum-resultado">
+      <p>Nenhum resultado encontrado</p>
+    </div>
     <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)"></mat-paginator>
   </div>
 
-  <div *ngIf="!existePessoa">
-    <p>Nenhum resultado encontrado</p>
-  </div>
 </div>

@@ -1,17 +1,20 @@
 <mat-card>
   <mat-card-title>Adicionar usuário</mat-card-title>
-  <form>
+  <form #form="ngForm">
     <mat-form-field>
       <label>Nome *</label>
-      <input matInput type="text" [(ngModel)]="pessoa.nome" name="nome">
+      <input matInput type="text" [(ngModel)]="pessoa.nome" name="nome" required>
+      <mat-error>Nome é obrigatório</mat-error>
     </mat-form-field>
     <mat-form-field>
       <label>CPF *</label>
-      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf">
+      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf" required mask="000.000.000-00">
+      <mat-error>CPF é obrigatório</mat-error>
     </mat-form-field>
   </form>
-  <div class="butoes">
+  <div class="espaco"></div>
+  <div class="botoes">
     <button mat-raised-button routerLink="/listar-pessoa">Cancelar</button>
-    <button mat-raised-button color="primary" type="submit" (click)="criarPessoa()">Adicionar</button>
+    <button mat-raised-button color="primary" type="submit" (click)="criarPessoa()" [disabled]="form.invalid">Adicionar</button>
   </div>
 </mat-card>
