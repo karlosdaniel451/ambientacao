@@ -81,9 +81,12 @@ public class PessoaService {
                         .replace("-", "")
         );
 
-        if (pessoaRepository.findPessoaByCpfEquals(pessoaModel.getCpf()) != null) {
-            throw new PessoaAlreadyExistsException("Ja existe uma pessoa com o CPF " +pessoaModel.getCpf());
+        Pessoa pessoaFoundByCpf = pessoaRepository.findPessoaByCpfEquals(pessoaModel.getCpf());
+        if (pessoaFoundByCpf != null && !pessoaFoundByCpf.getId().equals(id)) {
+            throw new PessoaAlreadyExistsException("Ja existe uma pessoa com o CPF " + pessoaModel.getCpf());
         }
+
+        pessoaModel.setId(id);
 
         Pessoa pessoaModelUpdated = pessoaRepository.save(pessoaModel);
 
