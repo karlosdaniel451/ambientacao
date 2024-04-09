@@ -1,18 +1,20 @@
 <mat-card>
   <mat-card-title>Editar usuário</mat-card-title>
-  <form>
+  <form #form="ngForm">
     <mat-form-field>
       <label>Nome *</label>
-      <input matInput type="text" [(ngModel)]="pessoa.nome" name="nome">
+      <input matInput type="text" [(ngModel)]="pessoa.nome" name="nome" required>
+      <mat-error>Nome é obrigatório</mat-error>
     </mat-form-field>
     <mat-form-field>
       <label>CPF *</label>
-      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf">
+      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf" required>
+      <mat-error>CPF é obrigatório</mat-error>
     </mat-form-field>
   </form>
   <div class="espaco"></div>
   <div class="butoes">
     <button mat-raised-button routerLink="/listar-pessoa">Cancelar</button>
-    <button mat-raised-button color="primary" type="submit" (click)="atualizarPessoa()">Atualizar</button>
+    <button mat-raised-button color="primary" type="submit" (click)="atualizarPessoa()" [disabled]="form.invalid">Atualizar</button>
   </div>
 </mat-card>
