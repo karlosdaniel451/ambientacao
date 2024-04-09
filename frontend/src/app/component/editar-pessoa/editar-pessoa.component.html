@@ -8,7 +8,7 @@
     </mat-form-field>
     <mat-form-field>
       <label>CPF *</label>
-      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf" required>
+      <input matInput type="text" [(ngModel)]="pessoa.cpf" name="cpf" required mask="000.000.000-00">
       <mat-error>CPF é obrigatório</mat-error>
     </mat-form-field>
   </form>
