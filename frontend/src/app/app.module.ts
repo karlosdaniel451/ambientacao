@@ -18,6 +18,7 @@ import { EditarPessoaComponent } from './component/editar-pessoa/editar-pessoa.c
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
+import { CardPerfilComponent } from './component/card-perfil/card-perfil.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
     CriarPessoaComponent,
     ListarPessoaComponent,
     EditarPessoaComponent,
+    CardPerfilComponent,
   ],
   imports: [
     BrowserModule,
