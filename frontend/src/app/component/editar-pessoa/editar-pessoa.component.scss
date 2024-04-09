@@ -12,3 +12,7 @@ button {
   justify-content: flex-end;
   display: flex;
 }
+
+:host {
+  width: 100%;
+}

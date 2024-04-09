@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 30px;
+  height: 100vh;
+}
+
+app-card-perfil {
+  padding-right: 30px;
+  min-height: 100%;
+}
+
+router-outlet {
+  flex: 1;
+}
