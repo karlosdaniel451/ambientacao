@@ -3,6 +3,7 @@ package br.ufg.inf.onboarding.services;
 import br.ufg.inf.onboarding.dtos.PessoaCreateRequest;
 import br.ufg.inf.onboarding.dtos.PessoaResponse;
 import br.ufg.inf.onboarding.dtos.PessoaUpdateRequest;
+import br.ufg.inf.onboarding.exceptions.PessoaAlreadyExistsException;
 import br.ufg.inf.onboarding.model.Pessoa;
 import br.ufg.inf.onboarding.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
@@ -53,6 +54,10 @@ public class PessoaService {
                         .replace("-", "")
         );
 
+        if (pessoaRepository.findPessoaByCpfEquals(pessoaModel.getCpf()) != null) {
+            throw new PessoaAlreadyExistsException("Ja existe uma pessoa com o CPF " +pessoaModel.getCpf());
+        }
+
         Pessoa pessoaModelUpdated = pessoaRepository.save(pessoaModel);
 
         return new PessoaResponse(
@@ -69,6 +74,17 @@ public class PessoaService {
 
         Pessoa pessoaModel = new Pessoa();
         BeanUtils.copyProperties(pessoa, pessoaModel);
+
+        pessoaModel.setCpf(
+                pessoaModel.getCpf()
+                        .replace(".", "")
+                        .replace("-", "")
+        );
+
+        if (pessoaRepository.findPessoaByCpfEquals(pessoaModel.getCpf()) != null) {
+            throw new PessoaAlreadyExistsException("Ja existe uma pessoa com o CPF " +pessoaModel.getCpf());
+        }
+
         Pessoa pessoaModelUpdated = pessoaRepository.save(pessoaModel);
 
         return new PessoaResponse(
