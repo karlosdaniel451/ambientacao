@@ -12,8 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 
 @RestController
 public class PessoaController {
@@ -36,13 +34,9 @@ public class PessoaController {
 
     @GetMapping(value = "/pessoas/{id}")
     public ResponseEntity<PessoaResponse> findById(@PathVariable Integer id) {
-        Optional<PessoaResponse> pessoaResponseOptional = pessoaService.findById(id);
+        PessoaResponse pessoaResponse = pessoaService.findById(id);
 
-        if (pessoaResponseOptional.isEmpty()) {
-           return ResponseEntity.notFound().build();
-        }
-
-        return ResponseEntity.ok(pessoaResponseOptional.get());
+        return ResponseEntity.ok(pessoaResponse);
     }
 
     @PostMapping(value = "/pessoas")

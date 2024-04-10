@@ -4,6 +4,7 @@ import br.ufg.inf.onboarding.dtos.PessoaCreateRequest;
 import br.ufg.inf.onboarding.dtos.PessoaResponse;
 import br.ufg.inf.onboarding.dtos.PessoaUpdateRequest;
 import br.ufg.inf.onboarding.exceptions.PessoaAlreadyExistsException;
+import br.ufg.inf.onboarding.exceptions.PessoaNotFoundException;
 import br.ufg.inf.onboarding.model.Pessoa;
 import br.ufg.inf.onboarding.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
@@ -28,11 +29,11 @@ public class PessoaService {
         return pessoaRepository.findAllByNomeContainsIgnoreCase(nome, pageable);
     }
 
-    public Optional<PessoaResponse> findById(Integer id) {
+    public PessoaResponse findById(Integer id) {
         Optional<PessoaResponse> pessoaResponseOptional = Optional.empty();
         Optional<Pessoa> pessoaModelOptional = pessoaRepository.findById(id);
         if (pessoaModelOptional.isEmpty()) {
-            return pessoaResponseOptional;
+            throw new PessoaNotFoundException("Nao existe uma pessoa com o id " + id);
         }
 
         Pessoa pessoaModel = pessoaModelOptional.get();
@@ -42,7 +43,7 @@ public class PessoaService {
                 pessoaModel.getCpf()
         ));
 
-        return pessoaResponseOptional;
+        return pessoaResponseOptional.get();
     }
 
     public PessoaResponse create(PessoaCreateRequest pessoa) {
@@ -68,9 +69,9 @@ public class PessoaService {
     }
 
     public PessoaResponse update(Integer id, PessoaUpdateRequest pessoa) {
-//        if (pessoaRepository.existsById(id) == false) {
-//
-//        }
+        if (!pessoaRepository.existsById(id)) {
+            throw new PessoaNotFoundException("Nao existe uma pessoa com o id " + id);
+        }
 
         Pessoa pessoaModel = new Pessoa();
         BeanUtils.copyProperties(pessoa, pessoaModel);
@@ -98,10 +99,10 @@ public class PessoaService {
     }
 
     public void deleteById(Integer id) {
-//        if (pessoaRepository.existsById(id) = false) {
-//
-//            throw new
-//        }
+        if (!pessoaRepository.existsById(id)) {
+            throw new PessoaNotFoundException("Nao existe uma pessoa com o id " + id);
+        }
+
         pessoaRepository.deleteById(id);
     }
 }
