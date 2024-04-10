@@ -46,6 +46,15 @@ public class PessoaService {
         return pessoaResponseOptional.get();
     }
 
+    public PessoaResponse findByCpf(String cpf) {
+        Pessoa pessoa = pessoaRepository.findPessoaByCpfEquals(cpf);
+        if (pessoa == null) {
+            throw new PessoaNotFoundException("Nao existe uma pessoa com o CPF " + cpf);
+        }
+
+        return new PessoaResponse(pessoa.getId(), pessoa.getNome(), pessoa.getCpf());
+    }
+
     public PessoaResponse create(PessoaCreateRequest pessoa) {
         Pessoa pessoaModel = new Pessoa();
         BeanUtils.copyProperties(pessoa, pessoaModel);
